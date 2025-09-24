@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: backstagetest1
+  annotations:
+    github.com/project-slug: bateternal/backstagetest1
+spec:
+  type: other
+  lifecycle: unknown
+  owner: team-platform
