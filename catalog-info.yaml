@@ -14,6 +14,8 @@ apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
   name: team-platform
+  annotations:
+    backstage.io/allowed-kinds: Component,User,Group
 spec:
   type: team
   profile:
