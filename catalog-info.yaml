@@ -18,7 +18,5 @@ spec:
   consumesApis:
     - backstage-catalog-api
   dependsOn:
-    - resource: backstage-database
-      type: database
-    - resource: backstage-cache
-      type: cache
+    - resource:default/backstage-database
+    - resource:default/backstage-cache
