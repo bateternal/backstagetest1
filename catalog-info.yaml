@@ -21,3 +21,44 @@ spec:
   dependsOn:
     - resource:default/backstage-database
     - resource:default/backstage-cache
+
+---
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: backstagetest1-api-location
+spec:
+  type: url
+  target: ./backstagetest1-api.yaml
+---
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: backstage-catalog-api-location
+spec:
+  type: url
+  target: ./backstage-catalog-api.yaml
+---
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: backstage-database-location
+spec:
+  type: url
+  target: ./backstage-database.yaml
+---
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: backstage-cache-location
+spec:
+  type: url
+  target: ./backstage-cache.yaml
+---
+apiVersion: backstage.io/v1alpha1
+kind: Location
+metadata:
+  name: backstage-demo-system-location
+spec:
+  type: url
+  target: ./backstage-demo-system.yaml
