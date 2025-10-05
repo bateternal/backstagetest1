@@ -7,7 +7,7 @@ metadata:
     github.com/project-slug: bateternal/backstagetest1
     backstage.io/source-location: url:https://github.com/bateternal/backstagetest1
     backstage.io/managed-by-location: url:https://github.com/bateternal/backstagetest1
-  backstage.io/techdocs-ref: dir:./docs
+    backstage.io/techdocs-ref: dir:./docs
 spec:
   type: service
   lifecycle: production
