@@ -2,6 +2,6 @@ apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
   name: backstage-demo
-  description: Demo system for Backstage entities
+  description: Demo system that includes backstagetest1 and related resources
 spec:
   owner: smarties

@@ -2,9 +2,26 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: backstage-catalog-api
-  description: Backstage Catalog API
+  description: Backstage Catalog API for managing software components and metadata
 spec:
   type: openapi
   lifecycle: production
   owner: smarties
-  system: backstage-demo
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Backstage Catalog API
+      version: 1.0.0
+    paths:
+      /entities:
+        get:
+          summary: List catalog entities
+          responses:
+            '200':
+              description: A list of entities
+              content:
+                application/json:
+                  schema:
+                    type: array
+                    items:
+                      type: object

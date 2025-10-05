@@ -2,7 +2,7 @@ apiVersion: backstage.io/v1alpha1
 kind: Resource
 metadata:
   name: backstage-cache
-  description: Cache resource for Backstage demo
+  description: Redis cache for Backstage
 spec:
   type: cache
   owner: smarties
