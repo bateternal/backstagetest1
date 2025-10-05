@@ -1,104 +1,12 @@
 site_name: Backstage Test Project Documentation
-site_description: Comprehensive documentation for Backstage integration examples
+site_description: Simple documentation for Backstage
 site_author: Smarties Team
-site_url: https://backstagetest1.example.com
-
-repo_name: bateternal/backstagetest1
-repo_url: https://github.com/bateternal/backstagetest1
-edit_uri: edit/main/docs/
-
-theme:
-  name: material
-  palette:
-    - scheme: default
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-    - scheme: slate
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-4
-        name: Switch to light mode
-  features:
-    - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.sections
-    - navigation.expand
-    - navigation.path
-    - navigation.top
-    - search.highlight
-    - search.share
-    - content.code.copy
-    - content.code.annotate
-  icon:
-    repo: fontawesome/brands/github
-
-markdown_extensions:
-  - pymdownx.highlight:
-      anchor_linenums: true
-      line_spans: __span
-      pygments_lang_class: true
-  - pymdownx.inlinehilite
-  - pymdownx.superfences:
-      custom_fences:
-        - name: mermaid
-          class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
-  - pymdownx.tabbed:
-      alternate_style: true
-  - pymdownx.snippets:
-      auto_append:
-        - includes/mkdocs.yml
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
-  - pymdownx.superfences
-  - pymdownx.tabbed
-  - pymdownx.arithmatex
-  - pymdownx.critic
-  - pymdownx.details
-  - pymdownx.inlinehilite
-  - pymdownx.keys
-  - pymdownx.mark
-  - pymdownx.smartsymbols
-  - pymdownx.superfences
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.tilde
-  - admonition
-  - codehilite
-  - footnotes
-  - meta
-  - toc:
-      permalink: true
 
 nav:
   - Home: index.md
-  - Getting Started:
-    - Installation: getting-started/installation.md
-  - Architecture:
-    - Overview: architecture/overview.md
-    - Components: architecture/components.md
-  - Development:
-    - Setup: development/setup.md
-  - API Reference:
-    - Overview: api/overview.md
-    - Examples: api/examples.md
-  - Deployment:
-    - Overview: deployment/overview.md
-  - Troubleshooting:
-    - Common Issues: troubleshooting/common-issues.md
-    - Error Codes: troubleshooting/error-codes.md
-    - FAQ: troubleshooting/faq.md
-  - Contributing:
-    - Guidelines: contributing/guidelines.md
+
+theme:
+  name: material
 
 plugins:
-  - search:
-      lang: en
-  - git-revision-date-localized:
-      enable_creation_date: true
-  - mkdocs-material
+  - search
