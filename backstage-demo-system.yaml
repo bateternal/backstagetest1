@@ -1,0 +1,7 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: backstage-demo
+  description: Demo system for Backstage entities
+spec:
+  owner: smarties

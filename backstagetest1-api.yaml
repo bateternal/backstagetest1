@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: backstagetest1-api
+  description: API for the backstagetest1 Django service
+spec:
+  type: openapi
+  lifecycle: production
+  owner: smarties
+  system: backstage-demo

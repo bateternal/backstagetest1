@@ -16,7 +16,8 @@ spec:
   providesApis:
     - backstagetest1-api
   consumesApis:
-    - backstage-catalog-api
+     - backstagetest1-api
+     - backstage-catalog-api
   dependsOn:
     - resource:default/backstage-database
     - resource:default/backstage-cache

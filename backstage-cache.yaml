@@ -1,0 +1,9 @@
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: backstage-cache
+  description: Cache resource for Backstage demo
+spec:
+  type: cache
+  owner: smarties
+  system: backstage-demo

@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: backstage-catalog-api
+  description: Backstage Catalog API
+spec:
+  type: openapi
+  lifecycle: production
+  owner: smarties
+  system: backstage-demo
