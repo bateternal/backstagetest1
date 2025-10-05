@@ -20,5 +20,5 @@ spec:
   dependsOn:
     - resource: backstage-database
       type: database
-    - resource:backstage-cache
+    - resource: backstage-cache
       type: cache
