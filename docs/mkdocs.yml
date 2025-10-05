@@ -1,0 +1,122 @@
+site_name: Backstage Test Project Documentation
+site_description: Comprehensive documentation for Backstage integration examples
+site_author: Smarties Team
+site_url: https://backstagetest1.example.com
+
+repo_name: bateternal/backstagetest1
+repo_url: https://github.com/bateternal/backstagetest1
+edit_uri: edit/main/docs/
+
+theme:
+  name: material
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.sections
+    - navigation.expand
+    - navigation.path
+    - navigation.top
+    - search.highlight
+    - search.share
+    - content.code.copy
+    - content.code.annotate
+  icon:
+    repo: fontawesome/brands/github
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.snippets:
+      auto_append:
+        - includes/mkdocs.yml
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.arithmatex
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - admonition
+  - codehilite
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Configuration: getting-started/configuration.md
+    - First Steps: getting-started/first-steps.md
+  - Architecture:
+    - Overview: architecture/overview.md
+    - Components: architecture/components.md
+    - Data Flow: architecture/data-flow.md
+    - Security: architecture/security.md
+  - Development:
+    - Setup: development/setup.md
+    - Coding Standards: development/coding-standards.md
+    - Testing: development/testing.md
+    - Debugging: development/debugging.md
+  - API Reference:
+    - Overview: api/overview.md
+    - Authentication: api/authentication.md
+    - Endpoints: api/endpoints.md
+    - Examples: api/examples.md
+  - Deployment:
+    - Overview: deployment/overview.md
+    - Local Development: deployment/local.md
+    - Staging: deployment/staging.md
+    - Production: deployment/production.md
+  - Operations:
+    - Monitoring: operations/monitoring.md
+    - Logging: operations/logging.md
+    - Maintenance: operations/maintenance.md
+  - Troubleshooting:
+    - Common Issues: troubleshooting/common-issues.md
+    - Error Codes: troubleshooting/error-codes.md
+    - FAQ: troubleshooting/faq.md
+  - Contributing:
+    - Guidelines: contributing/guidelines.md
+    - Code Review: contributing/code-review.md
+    - Release Process: contributing/release-process.md
+
+plugins:
+  - search:
+      lang: en
+  - git-revision-date-localized:
+      enable_creation_date: true
+  - mkdocs-material
