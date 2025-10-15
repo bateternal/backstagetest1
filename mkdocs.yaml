@@ -1,0 +1,12 @@
+site_name: Backstage Test Project Documentation
+site_description: Simple documentation for Backstage
+site_author: Smarties Team
+
+nav:
+  - Home: index.md
+
+theme:
+  name: material
+
+plugins:
+  - search
