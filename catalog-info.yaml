@@ -45,11 +45,3 @@ metadata:
 spec:
   type: file
   target: ./backstage-cache.yaml
----
-apiVersion: backstage.io/v1alpha1
-kind: Location
-metadata:
-  name: backstage-demo-system-location
-spec:
-  type: file
-  target: ./backstage-demo-system.yaml
