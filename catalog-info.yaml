@@ -12,7 +12,6 @@ spec:
   type: service
   lifecycle: production
   owner: user:default/admin
-  system: backstage-demo-system
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Location
