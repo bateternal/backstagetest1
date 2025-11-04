@@ -11,9 +11,9 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  dependsOn:
-    - resource:default/backstage-database
-    - resource:default/backstage-cache
+dependsOn:
+  - resource:default/backstage-database
+  - resource:default/backstage-cache
 
 ---
 apiVersion: backstage.io/v1alpha1
