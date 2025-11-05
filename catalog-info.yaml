@@ -6,41 +6,11 @@ metadata:
   annotations:
     github.com/project-slug: bateternal/backstagetest1
     backstage.io/source-location: url:https://github.com/bateternal/backstagetest1
-    backstage.io/managed-by-location: url:https://github.com/bateternal/backstagetest1/blob/main/catalog-info.yaml
-    backstage.io/techdocs-ref: dir:.
+    backstage.io/managed-by-location: url:https://github.com/bateternal/backstagetest1
+    backstage.io/techdocs-ref: github:https://github.com/bateternal/backstagetest1/tree/main/docs
 spec:
   type: service
   lifecycle: production
-  owner: user:default/admin
----
-apiVersion: backstage.io/v1alpha1
-kind: Location
-metadata:
-  name: backstagetest1-api-location
-spec:
-  type: file
-  target: ./backstagetest1-api.yaml
----
-apiVersion: backstage.io/v1alpha1
-kind: Location
-metadata:
-  name: backstage-catalog-api-location
-spec:
-  type: file
-  target: ./backstage-catalog-api.yaml
----
-apiVersion: backstage.io/v1alpha1
-kind: Location
-metadata:
-  name: backstage-database-location
-spec:
-  type: file
-  target: ./backstage-database.yaml
----
-apiVersion: backstage.io/v1alpha1
-kind: Location
-metadata:
-  name: backstage-cache-location
-spec:
-  type: file
-  target: ./backstage-cache.yaml
+  dependsOn:
+    - resource:default/backstage-database
+    - resource:default/backstage-cache
