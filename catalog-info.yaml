@@ -1,16 +1,179 @@
 apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: john-doe
+  description: Senior Backend Engineer
+spec:
+  profile:
+    displayName: John Doe
+    email: john.doe@example.com
+    picture: https://avatars.example.com/john-doe
+  memberOf:
+    - backend-team
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: backend-team
+  description: Backend engineering team responsible for core services
+spec:
+  type: team
+  profile:
+    displayName: Backend Team
+    email: backend-team@example.com
+  children: []
+  members:
+    - john-doe
+  parent: engineering
+
+---
+
+apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: backstagetest1
-  description: A comprehensive Django application integrated with Backstage for demonstrating various documentation patterns and best practices
-  annotations:
-    github.com/project-slug: bateternal/backstagetest1
-    backstage.io/source-location: url:https://github.com/bateternal/backstagetest1
-    backstage.io/managed-by-location: url:https://github.com/bateternal/backstagetest1
-    backstage.io/techdocs-ref: github:https://github.com/bateternal/backstagetest1/tree/main/docs
+  name: user-service
+  description: Service that handles user authentication and profiles
+  tags:
+    - go
+    - grpc
 spec:
   type: service
   lifecycle: production
+  owner: backend-team
+  system: core-platform
+  providesApis:
+    - user-api
   dependsOn:
-    - resource:default/backstage-database
-    - resource:default/backstage-cache
+    - resource:postgres-user-db
+  consumesApis:
+    - email-api
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: payment-service
+  description: Handles payment processing and transaction logic
+  tags:
+    - python
+    - fastapi
+spec:
+  type: service
+  lifecycle: production
+  owner: backend-team
+  system: core-platform
+  dependsOn:
+    - resource:postgres-payment-db
+  consumesApis:
+    - user-api
+  providesApis:
+    - payment-api
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: postgres-user-db
+  description: PostgreSQL database for user-service
+spec:
+  type: database
+  owner: backend-team
+  system: core-platform
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Resource
+metadata:
+  name: postgres-payment-db
+  description: PostgreSQL database for payment-service
+spec:
+  type: database
+  owner: backend-team
+  system: core-platform
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: user-api
+  description: API for user-related operations
+spec:
+  type: openapi
+  lifecycle: production
+  owner: backend-team
+  definition:
+    $text: https://example.com/openapi/user-api.yaml
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: payment-api
+  description: API for payment and transaction operations
+spec:
+  type: openapi
+  lifecycle: production
+  owner: backend-team
+  definition:
+    $text: https://example.com/openapi/payment-api.yaml
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: API
+metadata:
+  name: email-api
+  description: External email notification service
+spec:
+  type: openapi
+  lifecycle: production
+  owner: external-partner
+  definition:
+    $text: https://example.com/openapi/email-api.yaml
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: core-platform
+  description: The main backend system for user and payment services
+spec:
+  owner: backend-team
+  domain: backend-domain
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Domain
+metadata:
+  name: backend-domain
+  description: Domain for all backend services
+spec:
+  owner: backend-team
+
+---
+
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: backend-pipeline
+  description: CI/CD pipeline for backend services
+spec:
+  type: ci-pipeline
+  lifecycle: production
+  owner: backend-team
+  dependsOn:
+    - component:user-service
+    - component:payment-service
+  links:
+    - url: https://ci.example.com/job/backend-pipeline
+      title: View in Jenkins
+      icon: build
