@@ -75,8 +75,6 @@ spec:
   type: openapi
   lifecycle: production
   owner: backend-team
-  definition:
-    $text: https://example.com/openapi/user-api.yaml
 
 ---
 
@@ -89,8 +87,6 @@ spec:
   type: openapi
   lifecycle: production
   owner: backend-team
-  definition:
-    $text: https://example.com/openapi/payment-api.yaml
 
 ---
 
@@ -103,8 +99,6 @@ spec:
   type: openapi
   lifecycle: production
   owner: external-partner
-  definition:
-    $text: https://example.com/openapi/email-api.yaml
 
 ---
 
@@ -141,7 +135,3 @@ spec:
   dependsOn:
     - component:user-service
     - component:payment-service
-  links:
-    - url: https://ci.example.com/job/backend-pipeline
-      title: View in Jenkins
-      icon: build
