@@ -1,44 +1,22 @@
+
 apiVersion: backstage.io/v1alpha1
-kind: Component
+kind: Domain
 metadata:
-  name: user-service
-  description: Service that handles user authentication and profiles
-  tags:
-    - go
-    - grpc
+  name: backend-domain
+  description: Domain for all backend-related systems
 spec:
-  type: service
-  lifecycle: production
   owner: backend-team
-  system: core-platform
-  providesApis:
-    - user-api
-  dependsOn:
-    - resource:postgres-user-db
-  consumesApis:
-    - email-api
 
 ---
 
 apiVersion: backstage.io/v1alpha1
-kind: Component
+kind: System
 metadata:
-  name: payment-service
-  description: Handles payment processing and transaction logic
-  tags:
-    - python
-    - fastapi
+  name: core-platform
+  description: Main backend system containing user and payment services
 spec:
-  type: service
-  lifecycle: production
   owner: backend-team
-  system: core-platform
-  dependsOn:
-    - resource:postgres-payment-db
-  consumesApis:
-    - user-api
-  providesApis:
-    - payment-api
+  domain: backend-domain
 
 ---
 
@@ -75,6 +53,18 @@ spec:
   type: openapi
   lifecycle: production
   owner: backend-team
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: User API
+      version: 1.0.0
+    paths:
+      /users:
+        get:
+          summary: List users
+          responses:
+            "200":
+              description: OK
 
 ---
 
@@ -87,6 +77,18 @@ spec:
   type: openapi
   lifecycle: production
   owner: backend-team
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Payment API
+      version: 1.0.0
+    paths:
+      /payments:
+        post:
+          summary: Create a payment
+          responses:
+            "201":
+              description: Created
 
 ---
 
@@ -94,32 +96,67 @@ apiVersion: backstage.io/v1alpha1
 kind: API
 metadata:
   name: email-api
-  description: External email notification service
+  description: External email notification service (mocked for demo)
 spec:
   type: openapi
   lifecycle: production
   owner: external-partner
+  definition: |
+    openapi: 3.0.0
+    info:
+      title: Email API
+      version: 1.0.0
+    paths:
+      /send:
+        post:
+          summary: Send an email
+          responses:
+            "200":
+              description: Sent
 
 ---
 
 apiVersion: backstage.io/v1alpha1
-kind: System
+kind: Component
 metadata:
-  name: core-platform
-  description: The main backend system for user and payment services
+  name: user-service
+  description: Handles user authentication and profile management
+  tags:
+    - go
+    - grpc
 spec:
+  type: service
+  lifecycle: production
   owner: backend-team
-  domain: backend-domain
+  system: core-platform
+  providesApis:
+    - user-api
+  consumesApis:
+    - email-api
+  dependsOn:
+    - resource:postgres-user-db
 
 ---
 
 apiVersion: backstage.io/v1alpha1
-kind: Domain
+kind: Component
 metadata:
-  name: backend-domain
-  description: Domain for all backend services
+  name: payment-service
+  description: Manages payment processing and transactions
+  tags:
+    - python
+    - fastapi
 spec:
+  type: service
+  lifecycle: production
   owner: backend-team
+  system: core-platform
+  providesApis:
+    - payment-api
+  consumesApis:
+    - user-api
+  dependsOn:
+    - resource:postgres-payment-db
 
 ---
 
